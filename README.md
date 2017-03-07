@@ -26,3 +26,6 @@ You will destroy the entire repo
 上面的步驟做完之後理論上github要寫可以automatically merge，這時就寫一下title跟description然後按Create Pull Request了
 Create的時候我會看到，也記得去Trello把你負責的部分從In Progress移到Awaiting to be Checked
 我檢查沒問題的話就會按Approve，你就可以去按merge了
+
+## 5.有不確定的事情一定要問我
+Github很好用但沒用好世界會毀滅，愛護地球你我有責
