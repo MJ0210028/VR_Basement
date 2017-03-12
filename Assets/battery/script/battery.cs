@@ -13,8 +13,12 @@ public class battery : MonoBehaviour {
 
     void Start()
     {
+
         Instance = this;
+        textref.text = max.ToString();
+
     }
+
 
    	void Update ()
     {
@@ -22,7 +26,7 @@ public class battery : MonoBehaviour {
         light ll = thespotlight.GetComponentInChildren<light>();
 
         //press "R" to recharge 
-        if(Input.GetKeyDown(KeyCode.R) && (max != 0) && (juice < 50))
+        if (Input.GetKeyDown(KeyCode.R) && (max != 0) && (juice < 50))
         {
             juice = 100;
             ll.spotLight.enabled = true;
