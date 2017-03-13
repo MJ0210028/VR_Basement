@@ -8,15 +8,14 @@ public class battery : MonoBehaviour {
     public Scrollbar bbattery;
     public float juice = 100;
     public Text textref;
-    public int max = 10;
+    public int max = 0;
     public static battery Instance;
+    public bool on = false;
 
     void Start()
-    {
-
+    { 
         Instance = this;
-        textref.text = max.ToString();
-
+        EnableBatteryIcon(false);
     }
 
 
@@ -26,7 +25,7 @@ public class battery : MonoBehaviour {
         light ll = thespotlight.GetComponentInChildren<light>();
 
         //press "R" to recharge 
-        if (Input.GetKeyDown(KeyCode.R) && (max != 0) && (juice < 50))
+        if ((Input.GetKeyDown(KeyCode.R) || Input.GetButton("Fire1")) && (max != 0) && (juice < 50))
         {
             juice = 100;
             ll.spotLight.enabled = true;
@@ -35,7 +34,7 @@ public class battery : MonoBehaviour {
         }
 
         
-        if (juice >= 10)
+        if (juice >= 10 && on)
         {
             //battery juice will automatically decrease when the time past
             float timepast = Time.deltaTime;
@@ -56,8 +55,19 @@ public class battery : MonoBehaviour {
 
     public void pickBattery()
     {
+        GameObject thespotlight = GameObject.FindGameObjectWithTag("Spotlight");
+        light ll = thespotlight.GetComponentInChildren<light>();
         max += 1;
         textref.text = max.ToString();
+        ll.spotLight.enabled = true;
+        on = true;
+        EnableBatteryIcon(true);
     }
-    
+
+    private void EnableBatteryIcon(bool value)
+    {
+        transform.Find("frame").gameObject.SetActive(value);
+        transform.Find("mask").gameObject.SetActive(value);
+        textref.enabled = value;
+    }   
 }

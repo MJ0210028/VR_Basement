@@ -11,7 +11,7 @@ public class light : MonoBehaviour {
     void Start ()
     {
         spotLight = GetComponentInChildren<Light>();
-        spotLight.enabled = true;
+        spotLight.enabled = false;
 	}
 	
     //LIGHT CONTROL TEST. press "L" to open/close the light
