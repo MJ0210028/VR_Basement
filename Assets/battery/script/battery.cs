@@ -34,7 +34,7 @@ public class battery : MonoBehaviour {
         }
 
         
-        if (juice >= 10 && on)
+        if (juice >= 9 && on)
         {
             //battery juice will automatically decrease when the time past
             float timepast = Time.deltaTime;
@@ -42,9 +42,14 @@ public class battery : MonoBehaviour {
             bbattery.size = juice / 100f;
 
             //flash light effect  
-            if ((juice >= 10) && (juice <= 30))
+            if ((juice >= 9) && (juice <= 30))
             {
-                ll.spotLightOn = !ll.spotLightOn;
+                var flash = Random.value;
+                if(flash > 0.8 && flash <= 0.85)
+                {
+                    ll.spotLightOn = !ll.spotLightOn;
+                }
+                //ll.spotLightOn = !ll.spotLightOn;
                 ll.spotLight.enabled = ll.spotLightOn;
             }
         }
